@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'com.google.protobuf' version '0.8.18'
+}
+
+group 'org.grpc.protobuf'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.grpc:grpc-protobuf:1.59.0'
+    implementation 'com.google.protobuf:protobuf-java:3.25.0-RC2'
+    implementation 'org.apache.tomcat:annotations-api:6.0.53'
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.21.7"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:1.54.0"
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.plugins {
+                grpc {}
+            }
+        }
+    }
+}
+
+compileJava {
+    sourceCompatibility = 17
+    targetCompatibility = 17
+}
+
+test {
+    useJUnitPlatform()
+}
