@@ -16,6 +16,15 @@ dependencies {
     implementation 'org.apache.tomcat:annotations-api:6.0.53'
 }
 
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', 'build/generated/source/proto/main/java']
+        }
+    }
+}
+
+
 protobuf {
     protoc {
         artifact = "com.google.protobuf:protoc:3.21.7"
