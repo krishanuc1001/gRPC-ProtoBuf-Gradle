@@ -11,9 +11,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'io.grpc:grpc-protobuf:1.59.0'
-    implementation 'com.google.protobuf:protobuf-java:3.25.0-RC2'
-    implementation 'org.apache.tomcat:annotations-api:6.0.53'
+    implementation "io.grpc:grpc-protobuf:${grpcProtobufVersion}"
+    implementation "com.google.protobuf:protobuf-java:${googleProtobufJavaVersion}"
+    implementation "org.apache.tomcat:annotations-api:${annotationsApiVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}"
 }
 
 sourceSets {
