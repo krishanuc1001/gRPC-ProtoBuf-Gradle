@@ -3,6 +3,11 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.proto.generatedProtoClasses";
 
+/*
+  * This is a simple proto file to generate a java class
+  * This class will be used to create a person object
+ */
+
 message Person {
   string name = 1;
   int32 age = 2;
