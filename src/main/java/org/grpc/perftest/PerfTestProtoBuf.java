@@ -1,9 +1,9 @@
-package org.grpc;
+package org.grpc.perftest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.proto.generatedProtoClasses.Person;
-import org.grpc.jsonperftest.JPerson;
+import org.grpc.json.JPerson;
 
 import java.io.IOException;
 

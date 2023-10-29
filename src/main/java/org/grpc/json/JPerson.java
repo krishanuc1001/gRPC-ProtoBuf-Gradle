@@ -1,4 +1,4 @@
-package org.grpc.jsonperftest;
+package org.grpc.json;
 
 public class JPerson {
     private String name;
