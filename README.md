@@ -9,6 +9,18 @@ Other details will be added later.
 protoc --java_out=./ ./src/main/proto/*.proto
 ```
 
+### How to generate Javascript classes from .proto files with gRPC
+
+```zsh
+protoc --js_out=./ ./src/main/proto/*.proto
+```
+
+### How to generate Python classes from .proto files with gRPC-Web
+
+```zsh
+protoc --python_out=./ ./src/main/proto/*.proto
+```
+
 ### How to generate documentation from .proto files
 
 ```zsh
