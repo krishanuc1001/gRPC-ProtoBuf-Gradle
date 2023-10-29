@@ -1,6 +1,7 @@
 plugins {
     id 'java'
-    id 'com.google.protobuf' version '0.8.18'
+    id 'idea'
+    id 'com.google.protobuf' version "${googleProtobufPluginVersion}"
 }
 
 group 'org.grpc.protobuf'
@@ -10,38 +11,31 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation "io.grpc:grpc-protobuf:${grpcProtobufVersion}"
-    implementation "com.google.protobuf:protobuf-java:${googleProtobufJavaVersion}"
-    implementation "org.apache.tomcat:annotations-api:${annotationsApiVersion}"
-    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}"
-}
-
-sourceSets {
-    main {
-        java {
-            srcDirs = ['src/main/java', 'build/generated/source/proto/main/java']
-        }
-    }
-}
-
-
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.21.7"
+        artifact = "com.google.protobuf:protoc:${googleProtobufProtocVersion}"
     }
     plugins {
         grpc {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.54.0"
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcProtobufVersion}"
         }
     }
     generateProtoTasks {
-        all().each { task ->
-            task.plugins {
-                grpc {}
-            }
+        all()*.plugins {
+            grpc {}
         }
     }
+}
+
+sourceSets.main.java.srcDir new File(buildDir, 'generated/source')
+
+dependencies {
+    implementation "io.grpc:grpc-protobuf:${grpcProtobufVersion}"
+    runtimeOnly "io.grpc:grpc-netty-shaded:${grpcProtobufVersion}"
+    implementation "io.grpc:grpc-stub:${grpcProtobufVersion}"
+    implementation "com.google.protobuf:protobuf-java:${googleProtobufJavaVersion}"
+    implementation "org.apache.tomcat:annotations-api:${annotationsApiVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}"
 }
 
 compileJava {
