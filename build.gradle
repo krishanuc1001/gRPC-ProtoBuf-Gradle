@@ -30,13 +30,30 @@ protobuf {
 sourceSets.main.java.srcDir new File(buildDir, 'generated/source')
 
 dependencies {
+    // grpc / proto related dependencies
     implementation "io.grpc:grpc-protobuf:${grpcProtobufVersion}"
-    runtimeOnly "io.grpc:grpc-netty-shaded:${grpcProtobufVersion}"
+    implementation "io.grpc:grpc-netty-shaded:${grpcProtobufVersion}"
     implementation "io.grpc:grpc-stub:${grpcProtobufVersion}"
     implementation "com.google.protobuf:protobuf-java:${googleProtobufJavaVersion}"
+
+    // necessary for Java version 9+
     implementation "org.apache.tomcat:annotations-api:${annotationsApiVersion}"
+
+    // logback
+    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+
+    // JSON serialization and de-serialization
     implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
 }
+
+task customProtoc(type: Exec) {
+    workingDir projectDir
+    commandLine "protoc", "-I=src/main/proto", "--java_out=src/main/java", "--grpc_out=src/main/java", "src/main/proto/*.proto"
+}
+
+//compileJava.dependsOn customProtoc
 
 compileJava {
     sourceCompatibility = 17
