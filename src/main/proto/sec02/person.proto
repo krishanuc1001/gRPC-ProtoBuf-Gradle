@@ -1,7 +1,9 @@
 syntax = "proto3";
 
+package sec02;
+
 option java_multiple_files = true;
-option java_package = "com.proto.generatedProtoClasses";
+option java_package = "com.proto.generatedProtoClasses.sec02";
 
 /*
   * This is a simple proto file to generate a java class

@@ -1,6 +1,6 @@
 package org.grpc.protobuf;
 
-import com.proto.generatedProtoClasses.Person;
+import com.proto.generatedProtoClasses.sec01.Person;
 
 import java.io.IOException;
 import java.nio.file.Files;

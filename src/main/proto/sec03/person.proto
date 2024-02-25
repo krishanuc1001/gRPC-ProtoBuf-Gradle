@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package sec03;
+
+option java_multiple_files = true;
+option java_package = "com.proto.generatedProtoClasses.sec03";
+
+/*
+  * This is a simple proto file to generate a java class
+  * This class will be used to create a person object
+ */
+
+message Person {
+  string last_name = 1;
+  int32 age = 2;
+  string email = 3;
+  bool employed = 4;
+  double salary = 5;
+  int64 bank_account_number = 6;
+  sint32 balance = 7;
+}
+
+/*
+                Java Type                   ||        Proto Type
+        ====================================||=============================
+                int                         ||        int32/ sint32
+                long                        ||        int64/ sint64
+                float                       ||        float
+                double                      ||        double
+                boolean                     ||        bool
+                String                      ||        string
+                byte[]                      ||        bytes
+
+Note: We do not have char data type in Proto, we use string for characters
+
+ */
