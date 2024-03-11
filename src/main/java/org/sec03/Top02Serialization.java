@@ -30,6 +30,7 @@ public class Top02Serialization {
         LOGGER.info("{}", deserialize());
         LOGGER.info("person obj equals deserialized obj: {}", person.equals(deserialize()));
         LOGGER.info("person obj == deserialized obj: {}", person == deserialize());
+        LOGGER.info("person proto obj length in bytes: {}", person.toByteArray().length);
     }
 
     // Serialization: Object to File
